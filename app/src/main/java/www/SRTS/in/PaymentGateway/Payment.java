@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.Api;
 import com.paytm.pgsdk.PaytmOrder;
 import com.paytm.pgsdk.PaytmPGService;
 import com.paytm.pgsdk.PaytmPaymentTransactionCallback;
@@ -34,7 +33,7 @@ public class Payment extends AppCompatActivity implements PaytmPaymentTransactio
         Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                txnAmount = Amount.getText().toString();
+                txnAmount = Amount.getText().toString().trim();
                 if(!txnAmount.isEmpty()){
                     generateCheckSum();
                 }
@@ -43,8 +42,6 @@ public class Payment extends AppCompatActivity implements PaytmPaymentTransactio
     }
     private void generateCheckSum() {
 
-        //getting the tax amount first.
-        String amount = Amount.getText().toString().trim();
 
         //creating a retrofit object.
         Retrofit retrofit = new Retrofit.Builder()
