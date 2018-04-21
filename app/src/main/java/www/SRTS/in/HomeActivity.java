@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -151,9 +152,8 @@ public class HomeActivity extends AppCompatActivity {
         finish();
     }
 
-    public void Payment(View V){
-        Intent i = new Intent(this,Payment.class);
-        startActivity(i);
+    public void Payment(View view){
+        startActivity(new Intent(HomeActivity.this,Payment.class));
     }
 
 }

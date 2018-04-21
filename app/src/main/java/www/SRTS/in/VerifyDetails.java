@@ -76,7 +76,11 @@ public class VerifyDetails extends AppCompatActivity {
                                     NewUser CurrUser = dataSnapshot.getValue(NewUser.class);
                                     if(CurrUser!=null) {
                                         double fare = Double.parseDouble(Fare.getText().toString());
+                                        if(ticket.getReturn().equals("Return")){
+                                            fare*=2;
+                                        }
                                         double balance = CurrUser.getWalletBalance();
+
                                         if(fare>balance){
                                             Toast.makeText(getApplicationContext(),"Insufficient Funds",Toast.LENGTH_LONG).show();
                                             finish();
