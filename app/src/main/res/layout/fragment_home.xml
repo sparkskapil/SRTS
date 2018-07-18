@@ -35,7 +35,7 @@
             android:layout_marginStart="20dp"
             android:background="@android:color/transparent"
             android:scaleType="centerInside"
-            android:onClick="ComingSoon"
+            android:onClick="AccountDetails"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageButton"

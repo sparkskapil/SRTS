@@ -81,7 +81,7 @@ public class VerifyDetails extends AppCompatActivity {
                                         }
                                         double balance = CurrUser.getWalletBalance();
 
-                                        if(fare>balance){
+                                        if(fare > balance){
                                             Toast.makeText(getApplicationContext(),"Insufficient Funds",Toast.LENGTH_LONG).show();
                                             finish();
                                         }
@@ -89,13 +89,19 @@ public class VerifyDetails extends AppCompatActivity {
                                             Pay.setEnabled(false);
                                             double newBalance = balance-fare;
                                             database.child("Users").child(firebaseAuth.getUid()).child("walletBalance").setValue(newBalance);
+
                                             Transaction transaction = new Transaction();
                                             transaction.setTask("Ticket "+ticket.getSource()+" TO "+ticket.getDestination());
                                             transaction.setType("DEBIT");
                                             transaction.setAmount(fare);
+
+                                            //ADDS TRANSACTION IN DATABASE
                                             database.child("Users").child(firebaseAuth.getUid()).child("Transactions").push().setValue(transaction);
+
+                                            //ADDS TICKET IN DATABASE
                                             DatabaseReference booking = database.child("Users").child(firebaseAuth.getUid()).child("Bookings").push();
                                             booking.setValue(ticket);
+
                                             Toast.makeText(getApplicationContext(),"Ticket Booked Successfully",Toast.LENGTH_LONG).show();
                                             finish();
                                         }
@@ -116,8 +122,8 @@ public class VerifyDetails extends AppCompatActivity {
 
 //
 //      Validating QRcode
-        Stations s=new Stations();
-        if(!s.contains(Code)){
+        Stations s=new Stations();//all mumbai stations
+        if(! s.contains(Code)){
             Toast.makeText(this,"Invalid QR code",Toast.LENGTH_LONG).show();
             finish();
         }
@@ -184,6 +190,7 @@ public class VerifyDetails extends AppCompatActivity {
                                 }
                                 float fare = adults*aFare + children*cFare;
                                 Fare.setText(fare + "");
+
                                 Log.e("cFare aFare",cFare + " " + aFare);
                                 ticket.setFare(fare);
                                 pd.dismiss();

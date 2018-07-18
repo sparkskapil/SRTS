@@ -136,12 +136,12 @@ public class HomeActivity extends AppCompatActivity {
         btn.setBackgroundResource(R.color.colorPrimaryDark);
     }
 
-    public void ComingSoon(View view) {
-        Toast.makeText(HomeActivity.this,"Coming Soon!!!",Toast.LENGTH_LONG).show();
+    public void AccountDetails(View view) {
+        startActivity(new Intent(HomeActivity.this,AccountDetails.class));
     }
     public void BookTicket(View view) {
         Intent i = new Intent(this,BookTicketActivity.class);
-        gc();
+
         startActivityForResult(i,0);
     }
 

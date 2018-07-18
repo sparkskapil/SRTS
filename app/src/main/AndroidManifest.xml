@@ -33,7 +33,8 @@
             android:name="com.paytm.pgsdk.PaytmPGActivity"
             android:configChanges="keyboardHidden|orientation|keyboard"
             android:screenOrientation="portrait" />
-        <activity android:name=".PaymentGateway.PaymentDetails"></activity>
+        <activity android:name=".PaymentGateway.PaymentDetails" />
+        <activity android:name=".AccountDetails"></activity>
     </application>
 
 </manifest>
